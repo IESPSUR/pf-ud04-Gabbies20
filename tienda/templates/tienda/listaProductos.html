@@ -5,10 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    {% for n_producto in producto  %}
-        <ul>
-            <li>{{ n_producto.nombre}}</li>
-        </ul>
-    {% endfor %}
+<p><center><h1>Lista de productos</h1></center></p>
+    <ul>
+        {% for n_producto in producto  %}
+
+            <li>{{ n_producto}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

@@ -14,6 +14,9 @@ class Producto(models.Model):
     unidades = models.IntegerField()
     precio = models.FloatField()
     detalles = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre
 class Compra(models.Model):
     nombre_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     fecha =models.DateTimeField(default=timezone.now)
