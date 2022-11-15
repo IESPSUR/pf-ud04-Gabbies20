@@ -20,7 +20,7 @@ def agregar(request):
             #un modelo, es la ventaja que nos da tener un modelForm.
             form.save()
             #redirect debo importarlo.
-            return redirect('listaProductos')
+            return redirect('muestraProductos')
     else:
         form = ProductoForm()
 
@@ -33,4 +33,16 @@ def eliminar(request, producto_id): #Acptamos un parametro el ID del producto qu
     #Buscamos esa tarea en nuestro modelo:
     producto = Producto.objects.get(id = producto_id)
     producto.delete()
-    return redirect("listaProductos.html")
+    return redirect("muestraProductos")
+
+#def editar(request, producto_id):
+ #   producto=Producto.objects.get(id=producto_id)
+  #  if request.method == "POST":
+   #     form= ProductoForm(request.POST,instance=producto)
+    #    if form.is_valid():
+     #       form.save()
+      #      return redirect("muestraProductos")
+    #else:
+     #   form = ProductoForm(instance=producto)
+    #context = {'form': form}
+    #return render(request, 'tienda/editar.html', context)

@@ -10,6 +10,7 @@
         {% for n_producto in producto  %}
 
             <li>{{ n_producto}}</li>
+            #<button><a href="{% url 'eliminar' producto.id %}">Eliminar</a></button>
         {% endfor %}
     </ul>
 </body>
