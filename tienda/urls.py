@@ -6,5 +6,5 @@ urlpatterns = [
     path('tienda/', views.welcome, name='welcome'),
     path('muestraProductos/',views.muestraProductos,name='muestraProductos'),
     path('agregar/',views.agregar, name = 'agregar'),
-    path('eliminar/<int:pk>/' ,views.eliminar, name='eliminar'),
+    path('eliminar/<str:nombre>/' ,views.eliminar, name='eliminar'),
 ]

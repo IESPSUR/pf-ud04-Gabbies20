@@ -29,11 +29,11 @@ def agregar(request):
 
 
 
-def eliminar(request, producto_id): #Acptamos un parametro el ID del producto que vamos a eliminar
-    #Buscamos esa tarea en nuestro modelo:
-    producto = Producto.objects.get(id = producto_id)
+def eliminar(request, nombre): #Acptamos un parametro el ID del producto que vamos a eliminar
+    #Buscamos esa producto en nuestro modelo:
+    producto = Producto.objects.get(id=nombre)
     producto.delete()
-    return redirect("muestraProductos")
+    return redirect('muestraProductos', {'producto':producto})
 
 #def editar(request, producto_id):
  #   producto=Producto.objects.get(id=producto_id)
