@@ -10,4 +10,9 @@ class ProductoForm(forms.ModelForm):
         #Estamos haciendo model con el modelo de models.py,para poder usar nuestro fromulario
         #debemos ir a views,py e importarlo.
         model = Producto
-        fields = ['nombre','marca_producto','modelo','unidades','precio','detalles']
+        fields = ['nombre' ,
+                  'marca_producto',
+                  'modelo',
+                  'unidades',
+                  'precio',
+                  'detalles']
