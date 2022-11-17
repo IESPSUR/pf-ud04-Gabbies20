@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
 from .forms import ProductoForm
 
@@ -29,14 +29,16 @@ def agregar(request):
 
 
 
-def eliminar(request, nombre): #Acptamos un parametro el ID del producto que vamos a eliminar
+def eliminar(request, nombre): #Aceptamos un parametro el ID del producto que vamos a eliminar
     #Buscamos esa producto en nuestro modelo:
-    producto = Producto.objects.get(id=nombre)
-    producto.delete()
-    return redirect('muestraProductos', {'producto':producto})
+    producto = get_object_or_404(Producto, pk=nombre)
+    if request.method=='POST':
+        producto.delete()
+        return redirect('muestraProductos')
+    return render(request, 'tienda/eliminar.html',{'producto':producto})
 
-#def editar(request, producto_id):
- #   producto=Producto.objects.get(id=producto_id)
+#def editar(request, nombre):
+ #   producto=Producto.objects.get(id=nombre)
   #  if request.method == "POST":
    #     form= ProductoForm(request.POST,instance=producto)
     #    if form.is_valid():

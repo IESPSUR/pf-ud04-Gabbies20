@@ -6,12 +6,16 @@
 </head>
 <body>
 <p><center><h1>Lista de productos</h1></center></p>
+<a href="{% url 'agregar' %}"><input type="button" value="Agregar producto"></a>
     <ul>
         {% for n_producto in producto  %}
 
             <li>{{ n_producto}}</li>
-            <button><a href="{% url 'eliminar' n_producto.nombre %}">Eliminar</a></button>
-
+            <a href="{% url 'eliminar' n_producto.nombre %}">Eliminar</a>
+            <form action="{% url 'eliminar' n_producto.nombre %}" method="post">
+            {% csrf_token %}
+                <input type="submit">
+            </form>
         {% endfor %}
     </ul>
 </body>
