@@ -14,7 +14,8 @@
             <a href="{% url 'eliminar' n_producto.nombre %}">Eliminar</a>
             <form action="{% url 'eliminar' n_producto.nombre %}" method="post">
             {% csrf_token %}
-                <input type="submit">
+                <input type="submit" value="Eliminar">
+                <input type="submit" value="Editar">
             </form>
         {% endfor %}
     </ul>

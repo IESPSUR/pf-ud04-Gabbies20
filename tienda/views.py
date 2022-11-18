@@ -30,20 +30,19 @@ def agregar(request):
 
 
 def eliminar(request, nombre): #Aceptamos un parametro el ID del producto que vamos a eliminar
-    #Buscamos esa producto en nuestro modelo:
+    #Buscamos ese producto en nuestro modelo:
     producto = get_object_or_404(Producto, pk=nombre)
     if request.method=='POST':
         producto.delete()
         return redirect('muestraProductos')
-    return render(request, 'tienda/eliminar.html',{'producto':producto})
 
-#def editar(request, nombre):
- #   producto=Producto.objects.get(id=nombre)
-  #  if request.method == "POST":
-   #     form= ProductoForm(request.POST,instance=producto)
-    #    if form.is_valid():
-     #       form.save()
-      #      return redirect("muestraProductos")
+def editar(request, nombre):
+    producto=Producto.objects.get(nombre)
+    if request.method == "POST":
+        form= ProductoForm(request.POST,instance=producto)
+        if form.is_valid():
+            form.save()
+            return redirect("muestraProductos")
     #else:
      #   form = ProductoForm(instance=producto)
     #context = {'form': form}
