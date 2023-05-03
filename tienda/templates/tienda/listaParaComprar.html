@@ -1,0 +1,56 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<br>
+<h4>¿Desea buscar un producto?</h4>
+<form method="post">
+    {% csrf_token %}
+    {{ form.nombre }}
+    <button type="submit">Buscar</button>
+</form>
+<hr>
+{% if listaProductos %}
+<h4><b>Productos:</b></h4>
+<br>
+<form method="post" action="">
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Unidades</th>
+                <th>Precio</th>
+                <th>Detalles</th>
+                <th>Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in listaProductos %}
+            <tr>
+                <td>{{ producto.pk }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.modelo }}</td>
+                <td>{{ producto.unidades }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.detalles }}</td>
+                <td>{{ producto.marca }}</td>
+                <td>
+                    <form action=" {% url 'realizarCompra' producto.id %}" method="post" class="form-inline d-flex" >
+                        {% csrf_token %}
+                        <div class="form-group mr-2 ">
+                            <input type="number" class="form-control" name="unidades" value="1" min="1" >
+                        </div>
+                        <a href="{% url 'realizarCompra' producto.id  %}" class="btn btn-success">Comprar</a>
+                    </form>
+                </td>
+                {% endfor %}
+</form>
+
+
+{% else %}
+<p>No se encontraron resultados para la búsqueda.</p>
+{% endif %}
+{% endblock %}

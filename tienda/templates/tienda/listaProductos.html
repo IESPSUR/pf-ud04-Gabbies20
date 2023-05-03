@@ -6,18 +6,26 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Descripción</th>
-        <th>Acciones</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Modelo</th>
+          <th>Unidades</th>
+          <th>Precio</th>
+          <th>Detalles</th>
+          <th>Marca</th>
+          <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       {% for producto in productos %}
         <tr>
+            <td>{{ producto.pk }}</td>
           <td>{{ producto.nombre }}</td>
-          <td>{{ producto.precio }}</td>
-          <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.modelo }}</td>
+            <td>{{ producto.unidades }}</td>
+            <td>{{ producto.precio }}</td>
+          <td>{{ producto.detalles }}</td>
+          <td>{{ producto.marca }}</td>
           <td>
             <a href="{% url 'editar_producto' producto.id %}" class="btn btn-primary">Editar</a>
             <form action="{% url 'eliminar_producto' producto.id %}" method="post" style="display: inline;">
@@ -28,7 +36,7 @@
         </tr>
       {% empty %}
         <tr>
-          <td colspan="4">No hay productos disponibles.</td>
+          <td colspan="4">No hay productos disponiblesrrrrrrrrrrrrr.</td>
         </tr>
       {% endfor %}
     </tbody>
