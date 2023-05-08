@@ -1,10 +1,9 @@
 from django import forms
 from .models import Producto, Compra
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
-
-
+from django.contrib.auth.forms import AuthenticationForm
 
 class ProductoForm(forms.ModelForm):
     class Meta:
@@ -16,24 +15,33 @@ class ProductoForm(forms.ModelForm):
         #Cabe destacar que con forms.ModelForm no es necesario definir los campos del formulario manualmente, ya que Django genera automáticamente un campo para
         # cada campo del modelo especificado. También se pueden utilizar otros tipos de campos de formularios, como forms.CharField o forms.DecimalField, si se desea tener un mayor control sobre el formato de entrada de los datos.
 
-class CompraForm(forms.ModelForm):
-    class Meta:
-        model = Compra
-        fields =('importe','unidades','fecha','user','producto')
-
-
-
 class BusquedaForm(forms.ModelForm):
     nombre = forms.CharField(max_length=100, required=True)
-
-
     class Meta:
         model = Producto
         fields = ('nombre'),
         #exclude =('modelo','unidades','precio','detalles','marca')
 
+class CompraForm(forms.ModelForm):
+    class Meta:
+        model = Compra
+        #La variable fields de la clase Meta indica que campos del modelo Compra
+        #deben ser incluidos en el formulario.
+        fields = ['unidades']
+
+#class RegistroForm(UserCreationForm):
+ #   email = forms.EmailField()
+
+  #  error_messages = {
+   #     'password_mismatch': 'Las contraseñas no coinciden',
+    #    'invalid': 'Dirección de correo electrónico inválida',
+    #}
 
 
+
+class IniciarSesionForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 
 

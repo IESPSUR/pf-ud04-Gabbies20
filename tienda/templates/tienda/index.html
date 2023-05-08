@@ -4,7 +4,8 @@
 	<h2>Bienvenido a la tienda virtual</h2>
 	<ul>
 		<li> <a href="{% url 'lista_productos' %}">Gestión de Productos</a> </li>
-		<li>Informes</li>
-		<li><a href="{% url 'compra' %}">Realizar compra</a></li>
+
 	</ul>
+    <a class="btn btn-primary" href="{% url 'login' %}" role="button">Iniciar sesión</a>
+<a class="btn btn-secondary" href="{% url 'registro' %}" role="button">Registrarse</a>
 {% endblock %}

@@ -38,18 +38,16 @@
                 <td>{{ producto.detalles }}</td>
                 <td>{{ producto.marca }}</td>
                 <td>
-                    <form action=" {% url 'realizarCompra' producto.id %}" method="post" class="form-inline d-flex" >
+                    <form action="" method="post" class="form-inline d-flex" >
                         {% csrf_token %}
                         <div class="form-group mr-2 ">
                             <input type="number" class="form-control" name="unidades" value="1" min="1" >
                         </div>
-                        <a href="{% url 'realizarCompra' producto.id  %}" class="btn btn-success">Comprar</a>
+                        <a href=" {% url 'realizar_compra' producto.id%}" class="btn btn-success">Comprar</a>
                     </form>
                 </td>
                 {% endfor %}
 </form>
-
-
 {% else %}
 <p>No se encontraron resultados para la búsqueda.</p>
 {% endif %}

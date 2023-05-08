@@ -1,0 +1,15 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+  <h2>Login</h2>
+  <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-info">{{message}}</div>
+      {% endfor %}
+  {% endif %}
+  <p>¿No tienes ninguna cuenta? <a href="/registro">Registrate</a>.</p>
+{% endblock %}

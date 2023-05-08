@@ -1,13 +1,24 @@
 {% extends 'tienda/base.html' %}
-
 {% block content %}
-  <h1>Comprar {{ producto.nombre }}</h1>
-
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit">Comprar</button>
-  </form>
+    <h3>Información sobre el producto:</h3>
+    <li><b>Nombre: </b>{{ producto.nombre }}</li>
+    <li><b>Precio: </b> {{ producto.precio }}</li>
+    <li><b>Unidades disponibles: </b>{{ producto.unidades }}</li>
+    <br>
+    <h5>¿Cuántas unidades desea del producto?</h5>
+    <br>
+    <form method="post" action="{% url 'realizar_compra' producto.id %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-success" type="submit">Comprar</button>
+    </form>
+    <form method="post" action="/listadocompra/">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Cancelar</button>
+    </form>
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-info">{{message}}</div>
+      {% endfor %}
+  {% endif %}
 {% endblock %}
-

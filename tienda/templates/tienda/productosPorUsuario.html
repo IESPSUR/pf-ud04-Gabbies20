@@ -1,0 +1,21 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+  <h2>Productos vendidos por usuario</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Productos vendidos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos_por_usuario %}
+        <tr>
+          <td>{{ producto.usuario }}</td>
+          <td>{{ producto.productos }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

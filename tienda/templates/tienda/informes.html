@@ -1,0 +1,37 @@
+{% extends 'tienda/base.html' %}
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+
+{% block content %}
+
+        <table class="table table-striped">
+
+            <th>INFORMES DE VENTAS:</th>
+
+            <tr>
+                <td><a name="top10" id="top10" href="{% url 'top10' %}" role="button">Top 10 productos mas vendidos</a></td>
+            </tr>
+
+            <tr>
+		        <td><a name="porMarca" id="porMarca" href="{% url 'listadoMarca' %}" role="button">Buscar por marca</a></td>
+            </tr>
+
+            <tr>
+		        <td><a name="porCliente" id="porCliente" href="{% url 'productosPorUsuario' %}" role="button">Buscar por cliente</a></td>
+            </tr>
+
+            <tr>
+		        <td><a name="top10Clientes" id="top10Clientes" href="{% url 'top_clientes' %}" role="button">Top 10: Clientes con mayor importe gastado</a></td>
+            </tr>
+
+        </table>
+
+{% endblock %}
+    </body>
+
+</html>

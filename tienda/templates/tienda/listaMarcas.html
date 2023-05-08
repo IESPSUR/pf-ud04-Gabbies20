@@ -1,0 +1,10 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+  <h2>Productos de la marca {{ marca.nombre }}</h2>
+  <ul>
+    {% for producto in productos %}
+      <li>{{ producto.nombre }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

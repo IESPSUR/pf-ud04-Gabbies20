@@ -1,0 +1,27 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+	<h2>Bienvenido a la tienda virtual</h2>
+	<ul>
+		<li> <a href="{% url 'lista_productos' %}">Gestión de Productos</a> </li>
+
+		{% if user.is_authenticated and user.is_staff %}
+			<li><a href="{% url 'informes' %}">Informes</a></li>
+		{% endif %}
+
+		<li><a href="{% url 'busqueda' %}">Realizar compra</a></li>
+	</ul>
+
+	{% if user.is_authenticated %}
+		<p>Bienvenido, {{ user.username }}! <a href="{% url 'welcome' %}">Cerrar sesión</a></p>
+	{% else %}
+		<a class="btn btn-primary" href="{% url 'login' %}" role="button">Iniciar sesión</a>
+		<a class="btn btn-secondary" href="{% url 'registro' %}" role="button">Registrarse</a>
+	{% endif %}
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-info">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

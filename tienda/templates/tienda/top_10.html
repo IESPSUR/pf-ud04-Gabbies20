@@ -1,0 +1,21 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+  <h2>Top 10 de productos más vendidos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Unidades vendidas</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+        <tr>
+          <td>{{ producto.producto }}</td>
+          <td>{{ producto.unidades }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
